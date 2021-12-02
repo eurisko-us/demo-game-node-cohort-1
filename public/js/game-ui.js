@@ -24,15 +24,17 @@ function updateBoard(board) {
         let row = boardTable.insertRow();
 
         for(let j = 0; j < board.numCols; j++) {
-            let spaceValue = board.spaces[i][j];
-
+            let spaceValue = board.spaces[JSON.stringify([i,j])];
             let cell = row.insertCell();
             cell.className = 'boardSpace';
 
-            if (spaceValue === 1) {
+            if (spaceValue['planet'] != null) {
                 cell.style.backgroundColor = 'red';
-            } else if (spaceValue === 2)  {
-                cell.style.backgroundColor = 'blue';
+                if (spaceValue['units'].length > 0)  {
+                    cell.innerHTML = "has some units";
+                }
+            } else if (spaceValue['units'].length > 0)  {
+                cell.style.backgroundColor = 'green';
             } else {
                 cell.style.backgroundColor = 'black';
             }
