@@ -31,7 +31,8 @@ function updateBoard(board) {
             if (spaceValue['planet'] != null) {
                 cell.style.backgroundColor = 'red';
                 if (spaceValue['units'].length > 0)  {
-                    cell.innerHTML = "has some units";
+                    let unitsNum = spaceValue['units'].length;
+                    cell.innerHTML = `has ${unitsNum} units`;
                 }
             } else if (spaceValue['units'].length > 0)  {
                 cell.style.backgroundColor = 'green';
@@ -40,4 +41,8 @@ function updateBoard(board) {
             }
         }
     }
+}
+
+function addTextToCell(string, cell) {
+    cell.innerHTML = string;
 }
